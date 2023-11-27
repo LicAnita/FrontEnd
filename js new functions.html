@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>For Each, Map, Reduce, Filter</h1>
+    <script>
+      const numbers = [6, 7, 8, 9, 10, 11, 12];
+      // manually log each number
+      //this one is more efficient because it doesn't have to check i value every time.
+      console.log(
+        "The following are the numbers on the reversed list created with FOR"
+      );
+      for (let i = numbers.length - 1; i >= 0; i--) {
+        console.log(numbers[i]);
+      }
+
+      console.log("The following are the numbers on the list created with FOR");
+      for (let i = 0; i < numbers.length; i++) {
+        console.log(numbers[i]);
+      }
+
+      //for each resolution
+      document.write(
+        "The following are the index and numbers on the list created with FOREACH: "
+      );
+      numbers.forEach(function (value, index, array) {
+        document.write("<br> Index: ", index, " Number: ", value);
+      });
+
+      // every manually with flag
+      let areMinors = true;
+
+      for (let i = numbers.length - 1; i >= 0; i--) {
+        if (numbers[i] >= 10) {
+          areMinors = false;
+        }
+      }
+
+      //use a ternary operator
+      console.log(
+        "This is a resolution using ternary operator: ",
+        areMinors
+          ? "All the values are Minors than 10"
+          : "Are at least one value major than 10"
+      );
+
+      //every with arrow returs false if any number does not satisfy the condition
+      console.log(numbers.every((n) => n < 10));
+
+      //some manually
+      let i = 0;
+      while (i < numbers.length) {
+        if (numbers[i] >= 10) {
+          document.write("<br> There is at least one major or equal than 10");
+          break;
+        }
+        i++;
+      }
+
+      //some: returns true if there is any number major or equal than 10.
+      console.log(numbers.some((n) => n >= 10));
+
+      //map manually, returns an even numbers array from an odd numbers array.
+      const odd = [2, 4, 6, 8, 10];
+      const even = [];
+
+      for (let i = 0; i < odd.length; i++) {
+        even.push(odd[i] + 1);
+      }
+      console.log(even);
+
+      //map
+      const evenMap = odd.map((n) => n + 1);
+      document.write("<br>", evenMap);
+
+      //find
+      console.log(odd.find((n) => n > 8));
+
+      const movies = ["batman", "superman", "chucky"];
+      console.log(movies.filter((movie) => movie.includes("super")));
+
+      //filter
+      console.log(odd.filter((n) => n > 4));
+
+      //reduce manually
+      sum = 0;
+      for (let i = odd.length - 1; i >= 0; i--) {
+        sum += odd[i];
+      }
+      console.log(sum);
+
+      //reduce, the zero at the end is the initial number.
+      let sumReduce = odd.reduce((counter, element) => counter + element, 0);
+      console.log(sumReduce);
+    </script>
+  </body>
+</html>
